@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logosignup-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+.signup-item {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.signup-header {
+  font-size: 24px;
+  color: #003033;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* .input-area-signup{
+  align-items: center;
+} */
+.input-area-signup.signup-icon {
+  max-width: 50px;
+  margin-bottom: 20px;
+  align-items: center;
+  
+  
+  
+}
+.signup-icon img {
+  max-width: 30%;
+  height: auto;
+}
+.button-user{
+  display: flex;
+}
+
+.signup-input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-box-signup {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  background-color: #EDFEFF;
+  transition: all 0.3s ease;
+}
+
+
+.signup-item button,
+.signup-item #btn-signup {
+  width: calc(50% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.signup-item #btn-signup {
+  background: linear-gradient(#DEFF97 15%, #76D8A9 90%);
+  color: #283400;
+}
+
+.signup-item #btn-signup:hover {
+  background-color: #7CB342;
+}
+
+.signup-item .back-button-signup {
+  background: linear-gradient(#FFFFFF 5%, #D9D9D9 95%);
+  color: #283400;
+}
+
+.signup-item .back-button-signup:hover {
+  background-color: #F1F8E9;
+}
+
+@media (min-width: 768px) {
+  .signup-container {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px;
+  }
+
+  .signup-item {
+    max-width: 600px;
+  }
+}
+/* Các kiểu CSS khác không thay đổi */
+
+.forgot-password {
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Hiệu ứng hover cho các input box */
+.input-box-signup:hover,
+.input-box-signup:focus {
+  border-color: #76D8A9;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+/* Hiệu ứng hover cho nút Đăng ký và Quay lại */
+.signup-item button:hover,
+.signup-item #btn-signup:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.signup-item .back-button-signup:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng animation cho header */
+.signup-header {
+  font-size: 24px;
+  color: #003033;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hiệu ứng bóng đổ cho nút */
+.signup-item button,
+.signup-item #btn-signup {
+  width: calc(50% - 20px);
+  margin: 10px;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-item button:active,
+.signup-item #btn-signup:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(2px);
+}
+
+/* Hiệu ứng chuyển màu nền */
+.signup-container {
+  background: linear-gradient(to right, #f9f9f9, #e0e0e0);
+}
+
+.signup-item #btn-signup:hover {
+  background: linear-gradient(#D4E157, #8BC34A);
+}
+.input-box-signup:focus,
+.input-box-signup:hover {
+  border-color: #76D8A9;
+  background-color: #e0f7fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  outline: none;
+}
+
+.input-box-signup.error {
+  border-color: #f44336;
+  background-color: #ffebee;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.input-box-signup.success {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.input-box-signup::placeholder {
+  color: #9e9e9e;
+  transition: color 0.3s ease;
+}
+
+.input-box-signup:focus::placeholder {
+  color: transparent;
+}
+.input-box-signup:hover,
+.input-box-signup:focus {
+  border-color: #76D8A9;
+  background-color: #e0f7fa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  outline: none;
+}
+
+.password-input-container {
+  position: relative;
+}
+

@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.modal.open {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-login {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: modalFadeIn 0.5s ease forwards;
+}
+
+.modal-container {
+    padding: 20px 40px;
+    text-align: center;
+}
+
+.modal-icon {
+    max-width: 100px;
+    margin: 0 auto 20px;
+}
+
+.modal-icon img {
+    width: 100%;
+    border-radius: 50%;
+    border: 4px solid #007bff;
+}
+
+.modal-header {
+    font-size: 24px;
+    color: #003033;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.modal-body {
+    background-color: #EDFEFF;
+    padding: 30px 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-weight: 500;
+    font-size: 18px;
+    color: #555;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-login {
+    display: inline-block;
+    padding: 15px 40px;
+    margin: 10px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #BAFBFF 0%, #64D6DD 100%);
+    color: #003033;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.question-login:hover {
+    background: linear-gradient(135deg, #64D6DD 0%, #BAFBFF 100%);
+}
+
+.button-question {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #DEFF97 0%, #76D8A9 100%);
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #003033;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button-question:hover {
+    background: linear-gradient(135deg, #76D8A9 0%, #DEFF97 100%);
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
