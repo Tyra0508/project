@@ -40,5 +40,5 @@ question.addEventListener('click', function(event){
 })
 
 function change() {
-  window.location.href = 'http://127.0.0.1:5500/login/question.html';
+  window.location.href = 'http://127.0.0.1:5500/mygrand/login/question.html';
 }
