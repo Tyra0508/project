@@ -1,0 +1,27 @@
+.button-container{
+    display: flex;
+    justify-content:space-around;
+}
+.older-button{
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    border-radius: 50%;
+}
+.relative-button{
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    border-radius: 50%;
+}
+.red-button {
+    background-color: red;
+}
+
+.green-button-1, .green-button-2 {
+    background-color: green;
+    width: 80px;
+    height: 80px;
+    background-color: green;
+    border-radius: 50%;
+}
