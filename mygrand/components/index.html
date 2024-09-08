@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách bệnh viện</title>
+    <link rel="stylesheet" href="../components/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @media (min-width: 769px) {
+            .button-back .fas.fa-arrow-left {
+                display: none;
+            }
+        }
+        .modal-overlay {
+            display: none;
+        }
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .lich-su-list {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .lich-su-list th, .lich-su-list td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .lich-su-list th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        .lich-su-list th:last-child, .lich-su-list td:last-child {
+            border-right: none;
+        }
+
+        .lich-su-item:last-child td {
+            border-bottom: none;
+        }
+
+        .status-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            margin: 0 auto;
+        }
+
+        .status-icon.completed {
+            background-color: #4CAF50;
+        }
+
+        .status-icon.pending {
+            background-color: #FF5722;
+        }
+
+        .lich-su-info {
+            width: 60%;
+        }
+
+        .hospital-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .doctor-info, .appointment-type {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .appointment-time {
+            text-align: right;
+        }
+
+        .appointment-date {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .appointment-day, .appointment-department {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .lich-su-list, .lich-su-list tbody, .lich-su-list tr, .lich-su-list td {
+                display: block;
+            }
+
+            .lich-su-list thead {
+                display: none;
+            }
+
+            .lich-su-list tr {
+                margin-bottom: 15px;
+                border: 1px solid #e0e0e0;
+            }
+
+            .lich-su-list td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .lich-su-list td:last-child {
+                border-bottom: none;
+            }
+
+            .lich-su-list td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .status-icon {
+                margin: 0 auto;
+            }
+
+            .lich-su-info, .appointment-time {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <template id="header-template">
+        <iframe src="../booking/index.html" style="width: 100%; border: none; height: 120px;"></iframe>
+    </template>
+    <script>
+        const template = document.getElementById('header-template').content;
+        document.body.prepend(template.cloneNode(true));
+    </script>
+
+    <div class="container">
+        <div class="dat_lich">
+            <div class="back_search">
+                <button class="button-back">
+                    <i class="fas fa-arrow-left"></i>
+                    <p class="button-text">Quay lại</p>
+                </button>
+                <div class="search-container">
+                    <input type="text" placeholder="Nhập tên bệnh viện, phòng khám" id="search-input">
+                    <i class="fas fa-search search-icon" id="search-button"></i>
+                </div>
+            </div>
+            <div class="kiem_tra_lich"> 
+                <img src="../components/images/check.png" alt="Kiểm tra lịch" id="icon-check">
+            </div>
+            <div class="lich-su-container">
+                <div class="lich-su-filters">
+                    <div class="filter-item">
+                        <select>
+                            <option>Thời gian</option>
+                            <!-- Thêm các tùy chọn khác -->
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select>
+                            <option>Địa điểm</option>
+                            <!-- Thêm các tùy chọn khác -->
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <select>
+                            <option>Phân loại</option>
+                            <!-- Thêm các tùy chọn khác -->
+                        </select>
+                    </div>
+                </div>
+            
+                <table class="lich-su-list">
+                    <thead>
+                        <tr>
+                            <th>Trạng thái</th>
+                            <th>Thông tin lịch khám</th>
+                            <th>Thời gian</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="lich-su-item">
+                            <td class="status-icon completed">✓</td>
+                            <td class="lich-su-info">
+                                <div class="hospital-name">Bệnh viện Thành phố Thủ Đức</div>
+                                <div class="doctor-info">PGS.BS.CKII Nguyễn Văn A</div>
+                                <div class="appointment-type">Đa Khoa - Khám sức khỏe tổng quát</div>
+                            </td>
+                            <td class="appointment-time">
+                                <div class="appointment-date">10:30 AM</div>
+                                <div class="appointment-day">9/9/2014</div>
+                                <div class="appointment-department">Đa Khoa</div>
+                            </td>
+                        </tr>
+                        <!-- Thêm các mục lịch sử khám bệnh khác tương tự -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="lich_su_dat_lich">
+            <img src="../components/images/dong_ho.png" alt="Lịch sử đặt lịch" id="icon-lich-su-dat-lich">
+            <p id="content-lich-su-dat-lich">Lịch sử đặt lịch</p>
+        </div>
+
+        <div class="content">
+            <div class="form_dat_lich" id="hospital-list">
+            </div>
+        </div>
+    </div>
+    <script>
+        let debounceTimeout;
+    
+        function displayHospitals(hospitals) {
+            const hospitalList = document.getElementById('hospital-list');
+            hospitalList.innerHTML = '';
+    
+            if (hospitals.length > 0) {
+                hospitals.forEach(hospital => {
+                    const hospitalDiv = document.createElement('div');
+                    hospitalDiv.className = 'benh_vien';
+                    hospitalDiv.innerHTML = `
+                        <img src="../components/images/anh_benh_vien.png" alt="Ảnh bệnh viện" class="anh_benh_vien">
+                        <p class="ten_benh_vien">${hospital.name}</p>
+                        <p class="khoang_cach">11 km</p>
+                        <button class="dat_lich_button">Đặt lịch khám bệnh</button>
+                    `;
+                    hospitalList.appendChild(hospitalDiv);
+                });
+                
+                // Thêm sự kiện click cho các nút đặt lịch
+                const datLichButtons = document.querySelectorAll('.dat_lich_button');
+                datLichButtons.forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                        showModal(hospitals[index].name);
+                    });
+                });
+            } else {
+                const noResultDiv = document.createElement('div');
+                noResultDiv.className = 'no-result';
+                noResultDiv.innerHTML = '<p>Không tìm thấy bệnh viện nào phù hợp.</p>';
+                hospitalList.appendChild(noResultDiv);
+            }
+        }
+    
+        function loadAllHospitals() {
+            fetch('../components/list.json')
+                .then(response => response.json())
+                .then(data => {
+                    displayHospitals(data);
+                })
+                .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+        }
+    
+        function performSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+    
+            if (searchTerm === '') {
+                loadAllHospitals();
+                return;
+            }
+    
+            fetch('../components/list.json')
+                .then(response => response.json())
+                .then(data => {
+                    const filteredHospitals = data.filter(hospital => 
+                        hospital.name.toLowerCase().includes(searchTerm)
+                    );
+                    displayHospitals(filteredHospitals);
+                })
+                .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+        }
+    
+        document.getElementById('search-input').addEventListener('input', function () {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(performSearch, 300);
+        });
+    
+        document.getElementById('search-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    
+        document.getElementById('search-button').addEventListener('click', performSearch);
+    
+        loadAllHospitals();
+        
+        // Hiển thị modal
+        function showModal(hospitalName) {
+            document.querySelector('.modal-overlay').classList.add('show');
+            document.querySelector('.hospital-name').textContent = hospitalName;
+        }
+        
+        // Ẩn modal khi click bên ngoài
+        document.addEventListener('click', function(event) {
+            const modalOverlay = document.querySelector('.modal-overlay');
+            if (event.target === modalOverlay) {
+                modalOverlay.classList.remove('show');
+            }
+        });
+
+    </script>
+    <div class="modal-overlay">
+        <div class="modal">
+            <img src="../components/images/anh_benh_vien.png" alt="Ảnh bệnh viện" class="anh_dat_lich">
+        <div class="header">
+            <div>
+                <div class="hospital-name"></div>
+                <div class="distance">1.16 km</div>
+            </div>
+            <div class="working-hours">
+                <div>Giờ làm việc</div>
+                <div>Thứ 2 - Thứ 6</div>
+                <div>7h - 16h30</div>
+            </div>
+        </div>
+    
+       
+        <div class="section-1">
+            <div class="checkbox-group">
+                <div class="section-title">Chuyên khám</div>
+                <label class="checkbox-label">
+                    <img src="../components/images/button.png" alt="Checkbox" class="checkbox-image">
+                    Khám sức khỏe tổng quát
+                </label>
+                <label class="checkbox-label">
+                    <img src="../components/images/button.png" alt="Checkbox" class="checkbox-image">
+                    Xét nghiệm Covid-19
+                </label>
+                <label class="checkbox-label">
+                    <img src="../components/images/button.png" alt="Checkbox" class="checkbox-image">
+                    Tiêm chủng vaccine
+                </label>
+            </div>
+            <div class="checkbox-group">
+                <div class="section-content">
+                    <p class="section-title">Chuyên khoa</p>
+                    <label class="checkbox-label">
+                        <img src="../components/images/button.png" alt="Checkbox" class="checkbox-image">
+                        <div>Đa khoa</div>
+                        
+                    </label>
+                </div>
+                <div class="section-content">
+                    <div class="section-title">Thời gian</div>
+                    <div class="input-group">
+                        <input type="date" id="date-slot">
+                        <select id="time-slot">
+                            <option value="">Chọn khung giờ</option>
+                            <option value="7:00">7:00 - 8:00</option>
+                            <option value="8:00">8:00 - 9:00</option>
+                            <option value="9:00">9:00 - 10:00</option>
+                            <option value="10:00">10:00 - 11:00</option>
+                            <option value="11:00">11:00 - 12:00</option>
+                            <option value="13:00">13:00 - 14:00</option>
+                            <option value="14:00">14:00 - 15:00</option>
+                            <option value="15:00">15:00 - 16:00</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    
+        <div class="section">
+            <div class="section-title">Thông tin bệnh nhân</div>
+            <div class="input-group">
+                <label for="name">Họ tên</label>
+                <input type="text" id="information" placeholder="Họ tên">
+            </div>
+            <div class="input-group">
+                <label for="dob">Ngày tháng năm sinh</label>
+                <input type="text" id="information" placeholder="Ngày tháng năm sinh">
+            </div>
+            <div class="input-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="information" placeholder="Địa chỉ">
+            </div>
+            <div class="input-group">
+                <label>
+                    <input type="checkbox" checked>
+                    Ghi nhớ địa chỉ
+                </label>
+            </div>
+        </div>
+            <button class="submit-button" onclick="showConfirmation()">Đặt lịch khám bệnh</button>
+            
+            
+           
+           
+            <script src="script.js"></script>
+    </div>
+    </div>
+    <script>
+        document.querySelectorAll('.checkbox-label').forEach(label => {
+            label.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+    <div class="confirmation-container">
+        <p>Xác nhận đặt lịch khám bệnh?</p>
+        <div class="button-group">
+            <button class="cancel-button">Hủy</button>
+            <button class="confirm-button" onclick="showConfirmation()">Đặt lịch</button>
+        </div>
+    </div>
+    <script>
+        function showConfirmation() {
+            document.querySelector('.confirmation-container').style.display = 'block';
+        }
+        
+        document.querySelector('.cancel-button').addEventListener('click', function() {
+            document.querySelector('.confirmation-container').style.display = 'none';
+        });
+        
+        // Đảm bảo DOM đã được tải hoàn toàn trước khi thêm sự kiện
+        document.addEventListener('DOMContentLoaded', function() {
+            var cancelButton = document.querySelector('.cancel-button');
+            if (cancelButton) {
+                cancelButton.addEventListener('click', function() {
+                    var confirmationContainer = document.querySelector('.confirmation-container');
+                    if (confirmationContainer) {
+                        confirmationContainer.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kiemTraLichButton = document.querySelector('.kiem_tra_lich');
+            const lichSuContainer = document.querySelector('.lich-su-container');
+            const hospitalList = document.querySelector('.content');
+
+            kiemTraLichButton.addEventListener('click', function() {
+                lichSuContainer.style.display = 'block';
+                hospitalList.style.display = 'none';
+            });
+
+            // Thêm nút "Quay lại" vào lich-su-container
+            const backButton = document.createElement('button');
+            backButton.textContent = 'Quay lại';
+            backButton.classList.add('back-button');
+            lichSuContainer.insertBefore(backButton, lichSuContainer.firstChild);
+
+            backButton.addEventListener('click', function() {
+                lichSuContainer.style.display = 'none';
+                hospitalList.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

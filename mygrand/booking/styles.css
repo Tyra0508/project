@@ -1,0 +1,136 @@
+/* styles.css */
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header styling */
+.header {
+    background-color: #3D8523;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+}
+
+#logo img,
+#user-logo img {
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 20px;
+   
+}
+#logo img{
+    margin-left: 20px;
+    height: 40px;
+    
+}
+#menu img{
+    height: 15px;
+}
+
+#logo img {
+    height: 50px;
+}
+
+.menu-header {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-header .item-header {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#header2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#usrname {
+    font-size: 16px;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .header1 {
+        align-items: flex-start;
+        display:flex;
+        justify-content: center;
+    }
+
+    .menu-header {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .header .menu-header {
+        display: none;
+        position: absolute; 
+        top: 60px; 
+        width: 100%; 
+        background-color: #3D8523; 
+        padding: 10px ; 
+        left: 0
+        
+        
+    }
+    .item-header-1{
+        border-top: 1px solid #ccc;
+
+    }
+    .hamburger-menu {
+        display: flex;
+        margin: 13px;
+    }
+
+    .hamburger-menu.active + .menu-header { /* Hiển thị menu khi hamburger menu được kích hoạt */
+        display: flex;
+        flex-direction: column;
+    }
+
+    #header2 {
+        display: none;
+    }
+
+    .header1 {
+        justify-content: space-between;
+        width: 100%;
+    }
+}

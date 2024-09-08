@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../function/styles.css">   
+    
+</head>
+<body>
+    <template id="header-template">
+        <iframe src="../booking/index.html" style="width: 100%; border: none;"></iframe>
+      </template>
+      
+      <script>
+        const template = document.getElementById('header-template').content;
+        document.body.prepend(template.cloneNode(true));
+      </script>
+
+      <P id="text-function">Các Dịch Vụ</P>
+      <div class="main">
+          <div class="main-icon-1">
+            <div class="icon-scan">
+              <img src="./images/scan.png" alt="scan" class="icon">
+            </div>
+            <div class="icon-suggest" onclick="showSuggestedClinicPage()">
+              <img src="./images/suggest.png" alt="Gợi ý phòng khám, bệnh viện" class="icon">
+            </div>
+            <div class="icon-booking" onclick="showIndexPage()">
+              <img src="./images/booking.png" alt="Đặt lịch" class="icon">
+            </div>
+          </div>
+          
+          <div class="main-icon-2">
+            <div class="icon-menu">
+              <img src="./images/menu.png" alt="Thực đơn" class="icon menu">
+            </div>
+            <div class="icon-healthy">
+              <img src="./images/health monitoring.png" alt="Theo dõi sức khỏe" class="icon">
+            </div>
+            <div class="icon-call">
+              <img src="./images/call.png" alt="Khẩn cấp" class="icon">
+            </div>
+          </div>
+      </div>
+      
+      <script>
+        function showIndexPage() {
+            window.location.href = '../components/index.html';
+        }
+        
+        function showSuggestedClinicPage() {
+            window.location.href = '../Suggested_clinic/index.html';
+        }
+      </script>
+</body>
+</html>

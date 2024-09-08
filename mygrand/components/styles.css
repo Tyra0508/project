@@ -1,0 +1,732 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dat_lich {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.back_search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.button-back {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.button-back:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.button-back p {
+    margin-right: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    margin-left: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #86D8DD;
+    box-shadow: 0 2px 8px rgba(134, 216, 221, 0.3);
+}
+
+.arrow-left {
+    max-width: 16px;
+    transition: transform 0.3s ease;
+}
+
+.button-back:hover .arrow-left {
+    transform: translateX(-3px);
+}
+
+.kiem_tra_lich {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.kiem_tra_lich:hover {
+    transform: scale(1.1);
+}
+
+#icon-check {
+    max-width: 40px;
+}
+
+.lich_su_dat_lich {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-left: 5%;
+}
+
+#icon-lich-su-dat-lich {
+    max-width: 50px;
+}
+
+#content-lich-su-dat-lich {
+    font-size: 25px;
+    color: #828181;
+    padding-left: 10px;
+}
+
+.form_dat_lich {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.benh_vien:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anh_benh_vien {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.ten_benh_vien {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.khoang_cach {
+    font-size: 16px;
+    color: #86D8DD;
+    margin-bottom: 15px;
+}
+
+.benh_vien {
+    border: 1px solid #E0E0E0;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: white;
+    max-width: 310px;
+    position: relative;
+}
+
+.dat_lich_button {
+    background-color: #86D8DD;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+.dat_lich_button:hover {
+    background-color: #539b9e;
+}
+
+@media (max-width: 768px) {
+    .dat_lich {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .back_search {
+        width: 100%;
+    }
+
+    .button-back {
+        padding: 8px 12px;
+    }
+
+    #search-input {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .kiem_tra_lich {
+        margin-top: 10px;
+    }
+
+    .lich_su_dat_lich {
+        justify-content: center;
+    }
+
+    .form_dat_lich {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    } 
+}
+
+@media (max-width: 480px) {
+    .dat_lich {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+    }
+
+    .back_search {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+    }
+
+    .button-back {
+        padding: 8px;
+        margin-right: 10px;
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+    }
+
+    .button-back .button-text {
+        display: none;
+    }
+
+    .button-back i {
+        font-size: 24px;
+        color: #333;
+    }
+
+    #search-input {
+        flex: 1;
+        margin: 0;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .kiem_tra_lich {
+        margin-left: 10px;
+    }
+
+    #icon-check {
+        max-width: 30px;
+        
+    }
+
+    .lich_su_dat_lich {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #86D8DD;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    #icon-lich-su-dat-lich {
+        max-width: 30px;
+    }
+
+    #content-lich-su-dat-lich {
+        display: none;
+    }
+
+    .benh_vien {
+        max-width: 100%;
+    }
+
+    .anh_benh_vien {
+        width: 100%;
+    }
+    #icon-check {
+        margin-bottom: 10px;
+    }
+}
+.search-container {
+    position: relative;
+    flex-grow: 1;
+    margin-left: 15px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #86D8DD;
+    box-shadow: 0 2px 8px rgba(134, 216, 221, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    color: #86D8DD;
+}
+/* Tổng thể */
+.modal {
+    max-width: 50%;
+    /* width: 80%; */
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    color: #4b5d57;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.open{
+    display: flex;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    /* display: none; */
+}
+.anh_dat_lich{
+    width: 100%;
+}
+
+/* Phần tiêu đề bệnh viện */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.header .hospital-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header .distance {
+    color: #4aafa3;
+    font-size: 14px;
+}
+
+.header .working-hours {
+    text-align: right;
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+/* Phần chọn loại khám */
+.section-1 {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.section-content{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.section-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.checkbox-image{
+    width: 20px;
+    padding-right: 5px;
+}
+.checkbox-label{
+    border: 1px solid #000;
+    padding: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkbox-label.active {
+    background-color: #BAFBFF;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+#date-slot{
+    width: 80%;
+    /* padding: 2px 6px; */
+}
+#time-slot{
+    width: 80%;
+    margin-top: 10px;
+}
+/* Phần nhập thông tin bệnh nhân */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #B5B5B5;
+    border-radius: 30px;
+}
+
+.input-group input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Nút đặt lịch */
+
+.submit-button {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #4aafa3;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    right: 15px !important;
+    position: absolute;
+    bottom: -35%;
+}
+
+.submit-button:hover {
+    background-color: #3d958a;
+}
+.confirmation-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    width: 300px;
+    margin: 50px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.confirmation-container p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cancel-button {
+    background-color: #fff;
+    color: #000;
+}
+
+.cancel-button:hover {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.confirm-button {
+    background-color: #fff;
+    color: #000;
+}
+
+.confirm-button:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Styles mới cho trang kiểm tra lịch */
+.lich-su-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: none;
+}
+
+.lich-su-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-item {
+    flex: 1;
+    margin-right: 10px;
+    position: relative;
+}
+
+.filter-item:last-child {
+    margin-right: 0;
+}
+
+.filter-item select {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px; /* Tăng padding bên phải để có chỗ cho mũi tên */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+.filter-item::after {
+    content: '\25BC'; /* Mã Unicode cho mũi tên xuống */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Đảm bảo mũi tên không can thiệp vào việc click */
+    color: #888;
+}
+
+.lich-su-list {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.lich-su-list th, .lich-su-list td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.lich-su-list th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.lich-su-list th:last-child, .lich-su-list td:last-child {
+    border-right: none;
+}
+
+.lich-su-item:last-child td {
+    border-bottom: none;
+}
+
+.status-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    margin: 0 auto;
+}
+
+.status-icon.completed {
+    background-color: #4CAF50;
+}
+
+.status-icon.pending {
+    background-color: #FF5722;
+}
+
+.lich-su-info {
+    width: 60%;
+}
+
+.hospital-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.doctor-info, .appointment-type {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.appointment-time {
+    text-align: right;
+}
+
+.appointment-date {
+    font-weight: bold;
+    color: #333;
+}
+
+.appointment-day, .appointment-department {
+    font-size: 14px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .lich-su-list, .lich-su-list tbody, .lich-su-list tr, .lich-su-list td {
+        display: block;
+    }
+
+    .lich-su-list thead {
+        display: none;
+    }
+
+    .lich-su-list tr {
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+    }
+
+    .lich-su-list td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .lich-su-list td:last-child {
+        border-bottom: none;
+    }
+
+    .lich-su-list td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .status-icon {
+        margin: 0 auto;
+    }
+
+    .lich-su-info, .appointment-time {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+    /* ... các styles hiện có ... */
+
+    .back-button {
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        background-color: #e0e0e0;
+    }

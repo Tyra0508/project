@@ -1,0 +1,45 @@
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+.env
+
+# Ignore node modules (for JavaScript/TypeScript projects)
+node_modules/
+
+# Ignore log files and database
+*.log
+*.sqlite3
+*.db
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.suo
+.ntvs
+*.njsproj
+*.sln
+
+# Ignore output folders
+dist/
+build/
+
+# Ignore compiled code
+*.class
+*.o
+*.out
+
+# Ignore sensitive files
+*.key
+*.pem
+
+# Ignore Flask's debug file
+instance/
+mygrand/signup/node_modules/
+git config --global core.autocrlf true

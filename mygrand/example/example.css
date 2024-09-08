@@ -1,6 +1,7 @@
 .button-container{
     display: flex;
     justify-content:space-around;
+    
 }
 .older-button{
     width: 80px;

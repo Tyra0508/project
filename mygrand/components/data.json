@@ -1,0 +1,21 @@
+{
+  "id": "1",
+  "benhVien": {
+    "ten": "Bệnh viện Chợ Rẫy",
+    "khoangCach": "1.16 km"
+  },
+  "chuyenKham": [
+    "Tiêm chủng vaccine"
+  ],
+  "chuyenKhoa": [],
+  "thoiGian": {
+    "ngay": "2024-09-18",
+    "khungGio": "11:00"
+  },
+  "thongTinBenhNhan": {
+    "hoTen": "t",
+    "ngaySinh": "33",
+    "diaChi": "t45",
+    "ghiNhoDiaChi": true
+  }
+}

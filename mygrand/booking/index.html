@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../booking/styles.css">   
+</head>
+<body>
+    
+        <div class="header">
+            <div class="header1">
+                <div class="item-header" id="logo"><img src="./images/logovg.png" alt="logo"></div>
+                <div class="menu-header">
+                    <div class="item-header-1" id="introduction">Giới thiệu</div>
+                    <div class="item-header-1" id="main">Trang chủ</div>
+                    <div class="item-header-1" id="About us">Về chúng tôi</div>
+                </div>
+                    
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="item-header" id="header2">
+                <div class="item-header" id="usrname">username</div>
+                <div class="item-header" id="user-logo"><img src="./images/user.png" alt="logo-user"></div>
+            </div>
+        </div>
+    
+    <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            document.querySelector('.menu-header').style.display = 
+                document.querySelector('.menu-header').style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>

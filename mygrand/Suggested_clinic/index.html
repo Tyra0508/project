@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>  
+    <link rel="stylesheet" href="../Suggested_clinic/styles.css">   
+
+</head>
+<body>
+    <template id="header-template">
+        <iframe src="../booking/index.html" style="width: 100%; border: none;"></iframe>
+      </template>
+      
+      <script>
+        const template = document.getElementById('header-template').content;
+        document.body.prepend(template.cloneNode(true));
+      </script>
+      <!-- content -->
+       <div class="container">
+            <div class="icon">
+                <div class="img-bulb">
+                    <img src="./images/lightbulb.png" alt="" id="icon-lightbulb">
+                </div>
+                <div class="suggest">
+                    <p id="content-suggest">Gợi ý phòng khám</p>
+                </div>
+            </div>
+            <div class="icon">
+                <div class="img-search">
+                    <img src="./images/search.png" alt="" id="icon-search">
+                </div>
+                <div class="search">
+                    <p id="content-search">Tìm kiếm phòng khám</p>
+                </div>
+            </div>
+       </div>
+</body>
+</html>
